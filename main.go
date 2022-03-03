@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"go-fragments/channel"
+	"go-fragments/context"
 	"go-fragments/exception"
 	"go-fragments/finally"
 	"go-fragments/method"
@@ -33,4 +34,6 @@ func main() {
 	channel.FindEvenNumberAndSquare(10)
 
 	sync.UseWaitGroup()
+
+	context.ContextHandle1()
 }
