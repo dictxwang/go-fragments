@@ -2,8 +2,11 @@ package main
 
 import (
 	"fmt"
+	"go-fragments/channel"
 	"go-fragments/exception"
 	"go-fragments/finally"
+	"go-fragments/method"
+	"go-fragments/sync"
 )
 
 func main() {
@@ -18,4 +21,16 @@ func main() {
 	fmt.Printf("DeferSample02 return: %d\n", finally.DeferSample02())
 	// 演示defer执行顺序（先进后出的顺序）
 	finally.DeferSample03()
+
+	person := method.Person{}
+	person.ChangeName("liudehua")
+	fmt.Println(person.GetName())
+
+	person.ChangeNameWithPointer("liudehua")
+	fmt.Println(person.GetName())
+
+	channel.ChanMethod1()
+	channel.FindEvenNumberAndSquare(10)
+
+	sync.UseWaitGroup()
 }
