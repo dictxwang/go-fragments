@@ -2,15 +2,22 @@ package main
 
 import (
 	"fmt"
-	"go-fragments/channel"
-	"go-fragments/context"
-	"go-fragments/exception"
-	"go-fragments/finally"
-	"go-fragments/method"
-	"go-fragments/sync"
+	"go-fragments/src/channel"
+	"go-fragments/src/context"
+	"go-fragments/src/exception"
+	"go-fragments/src/finally"
+	"go-fragments/src/method"
+	"go-fragments/src/sync"
 )
 
+// 获取编译参数 ldflags
+var ENV string
+var VERSION string
+
 func main() {
+	fmt.Printf("ENV=%s\n", ENV)
+	fmt.Printf("VERSION=%s\n", VERSION)
+
 	// 演示错误的recover使用方式
 	//exception.PanicSample01()
 
