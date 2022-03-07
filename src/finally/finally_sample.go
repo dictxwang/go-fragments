@@ -3,7 +3,7 @@ package finally
 import "fmt"
 
 // DeferSample01 演示defer在返回前执行
-func DeferSample01() (r int) {
+func deferSample01() (r int) {
 	defer func() {
 		r++
 	}()
@@ -11,7 +11,7 @@ func DeferSample01() (r int) {
 }
 
 // DeferSample02 实际上DeferSample01是这种实现顺序
-func DeferSample02() (r int) {
+func deferSample02() (r int) {
 	r = 0
 	func() {
 		r++
@@ -20,9 +20,19 @@ func DeferSample02() (r int) {
 }
 
 // DeferSample03 演示defer执行顺序
-func DeferSample03() {
+func deferSample03() {
 	fmt.Println("defer exec order: ")
 	defer fmt.Println(1)
 	defer fmt.Println(2)
 	defer fmt.Println(3)
+}
+
+func SampleMain()  {
+
+	fmt.Println("\n[finally_sample]")
+	// 演示defer在返回前执行
+	fmt.Printf("DeferSample01 return: %d\n", deferSample01())
+	fmt.Printf("DeferSample02 return: %d\n", deferSample02())
+	// 演示defer执行顺序（先进后出的顺序）
+	deferSample03()
 }

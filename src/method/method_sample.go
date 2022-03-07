@@ -1,5 +1,7 @@
 package method
 
+import "fmt"
+
 type Person struct {
 	name string
 }
@@ -18,3 +20,12 @@ func (p Person) GetName() string {
 	return p.name
 }
 
+func SampleMain()  {
+
+	fmt.Println("\n[method_sample]")
+	person := Person{}
+	person.ChangeName("liudehua")
+	fmt.Println(person.GetName())
+	person.ChangeNameWithPointer("liudehua")
+	fmt.Println(person.GetName())
+}

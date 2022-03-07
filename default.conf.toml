@@ -1,0 +1,18 @@
+name="toml_sample"
+online=true
+dob=1979-05-27T07:32:00-08:00
+authors=["liu", "zhao"]
+
+[dbs]
+    [dbs.dev]
+    host="10.101.1.1"
+    port=3306
+    dbname="toml"
+    [dbs.deploy]
+    host="10.201.1.1"
+    port=3302
+    dbname="toml"
+
+[clients]
+    data=[ ["A", "B"], [1, 2] ]
+    hosts=["10.301.1.1", "10.301.1.2"]

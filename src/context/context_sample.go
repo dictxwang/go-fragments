@@ -15,7 +15,7 @@ func doContextHandle(ctx context.Context, duration time.Duration) {
 	}
 }
 
-func ContextHandle1() {
+func contextHandle() {
 	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
 	defer cancel()
 
@@ -27,4 +27,10 @@ func ContextHandle1() {
 		fmt.Println("main:", ctx.Err())
 
 	}
+}
+
+func SampleMain()  {
+
+	fmt.Println("\n[context_sample]")
+	contextHandle()
 }

@@ -14,7 +14,7 @@ func doPrint(wg *sync.WaitGroup, msg string, t int64) {
 	wg.Done()
 }
 
-func UseWaitGroup() {
+func useWaitGroup() {
 	wg := &sync.WaitGroup{}
 	for i := 1; i <= 10; i++ {
 		wg.Add(1)
@@ -22,4 +22,10 @@ func UseWaitGroup() {
 	}
 	wg.Wait()
 	fmt.Println("main processing continue.")
+}
+
+func SampleMain()  {
+
+	fmt.Println("\n[sync_sample]")
+	useWaitGroup()
 }

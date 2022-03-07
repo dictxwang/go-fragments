@@ -2,45 +2,43 @@ package main
 
 import (
 	"fmt"
-	"go-fragments/src/channel"
-	"go-fragments/src/context"
-	"go-fragments/src/exception"
-	"go-fragments/src/finally"
-	"go-fragments/src/method"
-	"go-fragments/src/sync"
+	"go-fragments/src/config"
 )
 
 // 获取编译参数 ldflags
 var ENV string
 var VERSION string
 
-func main() {
+func ldflagsSample() {
+	fmt.Println("[ldflags_sample]")
 	fmt.Printf("ENV=%s\n", ENV)
 	fmt.Printf("VERSION=%s\n", VERSION)
+}
 
-	// 演示错误的recover使用方式
-	//exception.PanicSample01()
+func main() {
 
-	// 演示正确的recover使用方式
-	exception.PanicSample02()
+	ldflagsSample()
+	//
+	//exception.SampleMain()
+	//finally.SampleMain()
+	//method.SampleMain()
+	//channel.SampleMain()
+	//sync.SampleMain()
+	//context.SampleMain()
+	//
+	//config.SampleMainToml()
+	////config.SampleMainViperYaml01()
+	//config.SampleMainViperYaml02()
+	//config.SampleMainViperFlag01()
+	//config.SampleMainViperFlag02()
+	//config.SampleMainViperYmalUnmarshal()
+	//config.SampleMainViperJsonUnmarshal()
+	//file.SampleMain()
+	//log.SampleMainLog()
+	//log.SampleMainLogrus()
+	//log.SampleMainLogrusRotate()
 
-	// 演示defer在返回前执行
-	fmt.Printf("DeferSample01 return: %d\n", finally.DeferSample01())
-	fmt.Printf("DeferSample02 return: %d\n", finally.DeferSample02())
-	// 演示defer执行顺序（先进后出的顺序）
-	finally.DeferSample03()
+	config.SampleMainGoConfig()
 
-	person := method.Person{}
-	person.ChangeName("liudehua")
-	fmt.Println(person.GetName())
-
-	person.ChangeNameWithPointer("liudehua")
-	fmt.Println(person.GetName())
-
-	channel.ChanMethod1()
-	channel.FindEvenNumberAndSquare(10)
-
-	sync.UseWaitGroup()
-
-	context.ContextHandle1()
+	//server.SampleMain()
 }

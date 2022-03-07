@@ -1,0 +1,8 @@
+{
+  "name": "wangqiang",
+  "clothing": {
+    "jacket": "leather",
+    "trousers": "denim"
+  },
+  "hobbies": ["walking", "reading"]
+}

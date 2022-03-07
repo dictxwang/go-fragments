@@ -11,7 +11,7 @@ func doChanMethod1(ch chan bool) {
 	ch <- true
 }
 
-func ChanMethod1() {
+func chanMethod1() {
 	ch := make(chan bool)
 	go doChanMethod1(ch)
 	<-ch
@@ -39,11 +39,18 @@ func doPrint(printChannel chan int) {
 	}
 }
 
-func FindEvenNumberAndSquare(max int) {
+func findEvenNumberAndSquare(max int) {
 	findChannel := make(chan int)
 	printChannel := make(chan int)
 	go doFindEven(max, findChannel)
 	go doSquare(findChannel, printChannel)
 	// doPrint需要回到主协程执行
 	doPrint(printChannel)
+}
+
+func SampleMain() {
+
+	fmt.Println("\n[channel_sample]")
+	chanMethod1()
+	findEvenNumberAndSquare(10)
 }
