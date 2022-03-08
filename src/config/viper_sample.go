@@ -7,6 +7,7 @@ import (
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
+	"sync"
 	"time"
 )
 
@@ -50,10 +51,20 @@ func SampleMainViperYaml01()  {
 		fmt.Println("config file changed", in.Name)
 	})
 
-	for {
-		fmt.Println(myViper.GetString("name"))
-		time.Sleep(time.Second)
-	}
+	locker := new(sync.Mutex)
+	cond := sync.NewCond(locker)
+	cond.L.Lock()
+
+	go func() {
+		for _, num := range []int{1,2,3,4,5,6,7,8,9,10} {
+			fmt.Printf("viper watch %d: name=%s\n", num, myViper.GetString("name"))
+			time.Sleep(1 * time.Second)
+		}
+		cond.Signal()
+	}()
+
+	cond.Wait()
+	fmt.Println("viper watch: after cond wait...")
 }
 
 func SampleMainViperYaml02() {

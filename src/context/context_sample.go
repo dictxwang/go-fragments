@@ -29,8 +29,34 @@ func contextHandle() {
 	}
 }
 
+func contextCancel() {
+	ctx, cancel := context.WithCancel(context.Background())
+	// 同时传递value
+	ctx = context.WithValue(ctx, "v001", "123")
+
+	go func() {
+		for {
+			val := ctx.Value("v001").(string)
+			fmt.Printf("contextCancel: not cancelled, value=%s\n", val)
+			select {
+			case <-ctx.Done():
+				fmt.Println("contextCancel: has done...")
+				return
+			default:
+				fmt.Println("contextCancel: not done")
+			}
+			time.Sleep(1000 * time.Millisecond)
+		}
+	}()
+
+	time.Sleep(5 * time.Second)
+	cancel()
+	time.Sleep(1 * time.Second)
+}
+
 func SampleMain()  {
 
 	fmt.Println("\n[context_sample]")
 	contextHandle()
+	contextCancel()
 }

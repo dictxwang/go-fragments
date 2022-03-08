@@ -10,6 +10,7 @@ import (
 	"go-fragments/src/finally"
 	"go-fragments/src/log"
 	"go-fragments/src/method"
+	"go-fragments/src/server"
 	"go-fragments/src/sync"
 )
 
@@ -35,7 +36,7 @@ func main() {
 	context.SampleMain()
 
 	config.SampleMainToml()
-	//config.SampleMainViperYaml01()
+	config.SampleMainViperYaml01()
 	config.SampleMainViperYaml02()
 	config.SampleMainViperFlag01()
 	config.SampleMainViperFlag02()
@@ -48,5 +49,5 @@ func main() {
 
 	config.SampleMainGoConfig()
 
-	//server.SampleMain()
+	server.SampleMain()
 }
