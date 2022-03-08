@@ -8,6 +8,7 @@ import (
 	"go-fragments/src/exception"
 	"go-fragments/src/file"
 	"go-fragments/src/finally"
+	_http "go-fragments/src/http"
 	_interface "go-fragments/src/interface"
 	"go-fragments/src/log"
 	"go-fragments/src/method"
@@ -15,6 +16,7 @@ import (
 	"go-fragments/src/runtime"
 	"go-fragments/src/server"
 	"go-fragments/src/sync"
+	"go-fragments/src/tcp"
 )
 
 // 获取编译参数 ldflags
@@ -45,17 +47,18 @@ func main() {
 	config.SampleMainViperFlag02()
 	config.SampleMainViperYmalUnmarshal()
 	config.SampleMainViperJsonUnmarshal()
+	config.SampleMainGoConfig()
+
 	file.SampleMain()
 	log.SampleMainLog()
 	log.SampleMainLogrus()
 	log.SampleMainLogrusRotate()
-
-	config.SampleMainGoConfig()
-
 	runtime.SampleMain()
+
 	_interface.SampleMain()
 	_reflect.SampleMain()
+	_http.SampleMain()
 
 	server.SampleMain()
-
+	tcp.SampleMain()
 }
