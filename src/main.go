@@ -8,8 +8,11 @@ import (
 	"go-fragments/src/exception"
 	"go-fragments/src/file"
 	"go-fragments/src/finally"
+	_interface "go-fragments/src/interface"
 	"go-fragments/src/log"
 	"go-fragments/src/method"
+	_reflect "go-fragments/src/reflect"
+	"go-fragments/src/runtime"
 	"go-fragments/src/server"
 	"go-fragments/src/sync"
 )
@@ -49,5 +52,10 @@ func main() {
 
 	config.SampleMainGoConfig()
 
+	runtime.SampleMain()
+	_interface.SampleMain()
+	_reflect.SampleMain()
+
 	server.SampleMain()
+
 }
