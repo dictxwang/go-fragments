@@ -85,4 +85,9 @@ func SampleMain()  {
 	for i,r := range results {
 		fmt.Printf("reflect method result: item%d = %v\n", i, r)
 	}
+
+	// 使用reflect进行深度比较
+	a1 := []int{1,2,3}
+	a2 := []int{1,2,3}
+	fmt.Printf("a1 deepEqual a2: %v\n", reflect.DeepEqual(a1, a2))
 }

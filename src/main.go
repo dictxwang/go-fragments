@@ -5,9 +5,12 @@ import (
 	"go-fragments/src/channel"
 	"go-fragments/src/config"
 	"go-fragments/src/context"
+	_errors "go-fragments/src/errors"
 	"go-fragments/src/exception"
 	"go-fragments/src/file"
 	"go-fragments/src/finally"
+	"go-fragments/src/functional"
+	"go-fragments/src/generic"
 	_http "go-fragments/src/http"
 	_interface "go-fragments/src/interface"
 	"go-fragments/src/log"
@@ -58,6 +61,10 @@ func main() {
 	_interface.SampleMain()
 	_reflect.SampleMain()
 	_http.SampleMain()
+	_errors.SampleMain()
+	functional.SampleMain()
+
+	generic.SampleMainSimple()
 
 	server.SampleMain()
 	tcp.SampleMain()
