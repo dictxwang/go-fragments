@@ -69,5 +69,5 @@ func main() {
 	generic.SampleMainPower()
 	server.SampleMain()
 	tcp.SampleMain()
-	
+
 }
