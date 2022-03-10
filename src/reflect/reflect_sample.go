@@ -33,7 +33,7 @@ func SampleMain()  {
 	var j = 233
 	p := reflect.ValueOf(&j)
 	v := reflect.ValueOf(j)
-	fmt.Println(p, v)
+	fmt.Println(p, v)  // 0xc000016058 233
 
 	st := t1{
 		A: "s",
