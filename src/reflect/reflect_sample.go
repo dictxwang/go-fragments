@@ -91,3 +91,45 @@ func SampleMain()  {
 	a2 := []int{1,2,3}
 	fmt.Printf("a1 deepEqual a2: %v\n", reflect.DeepEqual(a1, a2))
 }
+
+func SampleMainType() {
+	fmt.Println("\n[reflect_sample_type]")
+
+	// 创建len和cap都是6的切片
+	slice1 := make([]int, 6, 6)
+	slice2 := []int {1,2,3}
+	fmt.Println(reflect.TypeOf(slice1))  // []int
+	fmt.Println(reflect.TypeOf(slice2))  // []int
+	fmt.Println(reflect.ValueOf(slice1).Type())  // []int
+	fmt.Println(reflect.ValueOf(slice1).Kind())  // slice
+	// Elem的执行对象需要是指针类型
+	//fmt.Println(reflect.ValueOf(slice2).Elem())  // panic: reflect: call of reflect.Value.Elem on slice Value
+	fmt.Println(reflect.TypeOf(slice2).Elem())  // int
+
+	// 转换成指针操作
+	slicePoint1 := &slice1
+	fmt.Println(reflect.TypeOf(slicePoint1))  // *[]int
+	fmt.Println(reflect.TypeOf(slicePoint1).Elem())  // []int
+	fmt.Println(reflect.TypeOf(slicePoint1).Elem().Elem())  // int
+
+	array1 := [3]int {1,2,3}
+	array2 := [...]int {1,2}
+	array3 := [...]int {1,2,5:6} // len=6
+	fmt.Println(reflect.TypeOf(array1))  // [3]int
+	fmt.Println(reflect.ValueOf(array1).Type())  // [3]int
+	fmt.Println(reflect.ValueOf(array1).Kind())  // array
+	fmt.Println(reflect.TypeOf(array2))  // [2]int
+	fmt.Println(reflect.TypeOf(array3))  // [6]int
+	fmt.Println(reflect.TypeOf(array3).Elem())  // int
+
+	arrayPoint1 := &array1
+	arrayPoint1[1] = 100
+	fmt.Println(reflect.TypeOf(arrayPoint1))  // *[3]int
+	fmt.Println(*arrayPoint1)  // [1 100 3]
+
+	t := t1{}
+	fmt.Println(reflect.TypeOf(t))  // _reflect.t1
+	fmt.Println(reflect.TypeOf(t).Kind())  // struct
+	fmt.Println(reflect.ValueOf(t).Type())  // _reflect.t1
+	fmt.Println(reflect.ValueOf(t).Kind())  // struct
+}

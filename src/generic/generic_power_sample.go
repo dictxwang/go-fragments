@@ -42,7 +42,7 @@ func transform(slice, function interface{}, inPlace bool) interface{} {
 	fn := reflect.ValueOf(function)
 	elemType := sliceInType.Type().Elem()
 	if !verifyFuncSignature(fn, elemType, nil) {
-		panic("transform: function must be of type func (" + sliceInType.Elem().String() + ") outputElemType")
+		panic("transform: function must be of type func(" + sliceInType.Elem().String() + ") outputElemType")
 	}
 
 	sliceOutType := sliceInType
@@ -62,6 +62,49 @@ func Transform(slice, function interface{}) interface{} {
 
 func TransformInPlace(slice, function interface{}) interface{} {
 	return transform(slice, function, true)
+}
+
+func filter(slice, function interface{}, inPlace bool) (interface{}, int) {
+	sliceInType := reflect.ValueOf(slice)
+	if sliceInType.Kind() != reflect.Slice {
+		panic("filter: wrong type, not slice")
+	}
+
+	fn := reflect.ValueOf(function)
+	elemType := sliceInType.Type().Elem()
+	boolType := reflect.ValueOf(true).Type()
+	if !verifyFuncSignature(fn, elemType, boolType) {
+		panic("filter: function must be of type func(" + elemType.String() + ")")
+	}
+
+	// 找到满足过滤条件的元素的下标
+	var which[] int
+	for i := 0; i < sliceInType.Len(); i++ {
+		if fn.Call([]reflect.Value{sliceInType.Index(i)})[0].Bool() {
+			which = append(which, i)
+		}
+	}
+
+	out := sliceInType
+	if !inPlace {
+		out = reflect.MakeSlice(sliceInType.Type(), len(which), len(which))
+	}
+
+	for i := range which {
+		out.Index(i).Set(sliceInType.Index(which[i]))
+	}
+	return out.Interface(), len(which)
+}
+
+func Filter(slice, function interface{}) interface{} {
+	out, _ := filter(slice, function, false)
+	return out
+}
+
+func FilterInPlace(slicePtr, function interface{}) {
+	slice := reflect.ValueOf(slicePtr)
+	_, size := filter(slice.Elem().Interface(), function, true)
+	slice.Elem().SetLen(size)
 }
 
 func Reduce(slice, zero, pairFunc interface{}) interface{} {
@@ -125,4 +168,16 @@ func SampleMainPower()  {
 		return a + b
 	})
 	fmt.Println("reduce result2: ", reduceResult2)
+
+	// 调用filter
+	// 这里需要传递指针
+	FilterInPlace(&list1, func(a int) bool {
+		return a % 2 == 0
+	})
+	fmt.Println("filter result: ", list1)
+
+	filterResult := Filter(list2, func(a string) bool {
+		return a != "c"
+	})
+	fmt.Println("filter result: ", filterResult)
 }

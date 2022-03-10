@@ -60,6 +60,7 @@ func main() {
 
 	_interface.SampleMain()
 	_reflect.SampleMain()
+	_reflect.SampleMainType()
 	_http.SampleMain()
 	_errors.SampleMain()
 	functional.SampleMain()
@@ -68,4 +69,5 @@ func main() {
 	generic.SampleMainPower()
 	server.SampleMain()
 	tcp.SampleMain()
+	
 }
