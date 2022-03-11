@@ -182,6 +182,7 @@ func log(context *gin.Context) {
 
 func SampleMainSecond() {
 
+	// 使用个性化的engine，手动注入中间件
 	router := gin.New()
 	router.Use(gin.Recovery())
 	router.Use(log)
