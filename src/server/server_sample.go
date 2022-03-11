@@ -23,7 +23,9 @@ func sayHello(w http.ResponseWriter, r *http.Request) {
 }
 
 func sayBey(w http.ResponseWriter, r * http.Request) {
-	io.WriteString(w, "Bye bye")
+	// 获取url参数
+	name := r.URL.Query()["name"]
+	io.WriteString(w, "Bye bye " + name[0])
 }
 
 func staticServer(w http.ResponseWriter, r *http.Request) {
