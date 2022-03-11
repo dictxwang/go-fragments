@@ -56,6 +56,8 @@ golang示例代码片段，基于 go mod 模式编写，go版本1.16。
 
 [18、通过net模块实现tcp服务端和客户端](https://github.com/dictxwang/go-fragments/blob/main/src/tcp/tcp_sample.go)
 
+[19、使用gin模块进行http服务端开发](https://github.com/dictxwang/go-fragments/blob/main/src/gin/gin_sample.go)
+
 ### 工程构建
 
 [1、go工程的交叉编译（跨平台编译）](https://github.com/dictxwang/go-fragments/blob/main/build.sh)
