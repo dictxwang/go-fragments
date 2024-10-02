@@ -5,9 +5,12 @@ go 1.16
 require (
 	github.com/BurntSushi/toml v1.0.0
 	github.com/Unknwon/goconfig v1.0.0
+	github.com/benburkert/dns v0.0.0-20190225204957-d356cf78cdfc // indirect
+	github.com/dictxwang/benburkert-dns v0.0.1
 	github.com/fastly/go-utils v0.0.0-20180712184237-d95a45783239 // indirect
 	github.com/fsnotify/fsnotify v1.5.1
 	github.com/gin-gonic/gin v1.7.7
+	github.com/google/uuid v1.6.0
 	github.com/jehiah/go-strftime v0.0.0-20171201141054-1d33003b3869 // indirect
 	github.com/jonboulle/clockwork v0.2.2 // indirect
 	github.com/lestrrat/go-envload v0.0.0-20180220120943-6ed08b54a570 // indirect

@@ -18,10 +18,23 @@ func panicSample02() {
 			fmt.Printf("panic recover: %s\n", r)
 		}
 	}()
+	//panic("this is a panic")
+
+	doPanic()
+}
+
+func doPanic() {
+
+	// 如果内层定义了异常捕获，将被内层捕获；否则异常将被抛出到方法外
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Printf("inner panic recover: %s\n", r)
+		}
+	}()
 	panic("this is a panic")
 }
 
-func SampleMain()  {
+func SampleMain() {
 
 	fmt.Println("\n[exception_sample]")
 	// 演示错误的recover使用方式，未捕获到异常程序退出

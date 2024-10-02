@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	_gin "go-fragments/src/gin"
+	"go-fragments/src/id"
+	"go-fragments/src/method"
 )
 
 // 获取编译参数 ldflags
@@ -21,7 +22,7 @@ func main() {
 	//
 	//exception.SampleMain()
 	//finally.SampleMain()
-	//method.SampleMain()
+	method.SampleMain()
 	//channel.SampleMain()
 	//sync.SampleMain()
 	//context.SampleMain()
@@ -54,5 +55,9 @@ func main() {
 	//tcp.SampleMain()
 
 	//_gin.SampleMainFirst()
-	_gin.SampleMainSecond()
+	//_gin.SampleMainSecond()
+
+	//net.NewMain()
+
+	id.UuidMain()
 }
