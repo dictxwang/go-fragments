@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go-fragments/src/id"
-	"go-fragments/src/method"
+	"go-fragments/src/encrypt"
 )
 
 // 获取编译参数 ldflags
@@ -22,7 +21,7 @@ func main() {
 	//
 	//exception.SampleMain()
 	//finally.SampleMain()
-	method.SampleMain()
+	//method.SampleMain()
 	//channel.SampleMain()
 	//sync.SampleMain()
 	//context.SampleMain()
@@ -59,5 +58,7 @@ func main() {
 
 	//net.NewMain()
 
-	id.UuidMain()
+	//id.UuidMain()
+
+	encrypt.SampleMain()
 }

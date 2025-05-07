@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func SampleMain()  {
+func SampleMain() {
 
 	// 获取当前路径
 	currentDir, _ := os.Getwd()
